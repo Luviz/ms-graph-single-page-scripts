@@ -16,7 +16,7 @@ My Hope with this project is to create a reusable set of tool that can by anyone
 
 - oneDrive
   - [List-UserFiles](./scripts/oneDrive/List-userFiles/README.md)
-  - [Remove-UsersFileItems](.)
+  - [Remove-UsersFileItems](./scripts/oneDrive/Remove-userFiles/README.md)
 
 ## Contributions
 
