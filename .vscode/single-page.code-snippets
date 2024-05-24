@@ -1,0 +1,45 @@
+{
+    "section-auth": {
+        "prefix": [
+            "auth",
+            "section-auth"
+        ],
+        "description": "Creates a odata auth section to connect",
+        "scope": "powershell",
+        "body": [
+            "function Get-AccessToken {",
+            "    \\$body = @{",
+            "        grant_type    = \"client_credentials\"",
+            "        client_id     = \\$clientId",
+            "        client_secret = \\$clientSecret",
+            "        scope         = \"https://graph.microsoft.com/.default\"",
+            "    }",
+            "\\$tokenUrl = \"https://login.microsoftonline.com/$tenantId/oauth2/v2.0/token\"",
+            "",
+            "    \\$response = Invoke-WebRequest -Uri \\$tokenUrl -Method Post -ContentType \"application/x-www-form-urlencoded\" -Body \\$body",
+            "    \\$responseData = \\$response.Content | ConvertFrom-Json",
+            "    return \\$responseData.access_token",
+            "}",
+        ]
+    },
+    "section-env": {
+        "prefix": [
+            "env",
+            "section-env"
+        ],
+        "description": "Creates a section that for enveroment configs",
+        "scope": "powershell",
+        "body": [
+            "## Environment variables",
+            "\\$tenantId= \"<tenantId>\"",
+            "\\$clientId= \"<clientId>\"",
+            "\\$secret= \"<secret>\"",
+            "",
+            "## Uncomment below to load from Env Variables",
+            "",
+            "# \\$tenantId= \\$env:TENANT_ID",
+            "# \\$clientId= \\$env:CLIENT_ID",
+            "# \\$secret= \\$env:SECRET",
+        ]
+    }
+}
